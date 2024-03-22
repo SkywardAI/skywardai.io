@@ -10,8 +10,6 @@ permalink: /
 Skyward.AI is an ambitious initiative spearheaded by the AI enthusiasts from RMIT. Our mission is to leverage advanced AI techniques to revolutionize the way we approach programming, making this domain more accessible, efficient, and integrated with cutting-edge AI capabilities.
 
 
-# 🌟 What We Do
-
 At SkywardAI, we believe in pushing the boundaries of technology and developing cutting-edge solutions. Here's what we're currently working on:
 
 Create a dynamic ecosystem that fosters innovation in AI, specifically tailored for the automation of interactive services.

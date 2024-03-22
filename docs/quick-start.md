@@ -99,6 +99,9 @@ You can verify that the backend is running correctly by visiting the following U
 http://localhost:80/
 ```
 
+![](../assets/images/platform.png)
+
+
 # Troubleshooting
 
 ## Checking the logs
