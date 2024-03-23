@@ -18,19 +18,19 @@ title: CHANGELOG
 
 ## 🚀 Features
 
-- [ci]Add version list @Aisuko (#32)
+- CI Add version list @Aisuko (#32)
 - Updated README.md @ImranSerifovic (#28)
-- [feature] Add makefile @Aisuko (#22)
+- Feature Add makefile @Aisuko (#22)
 - chore: add frontend docker image to the docker-compose @Wen-ace (#24)
-- [CI] Add CI for running unit testing @Aisuko (#18)
-- [CI]: feature/update CI @Aisuko (#8)
+- CI Add CI for running unit testing @Aisuko (#18)
+- CI feature/update CI @Aisuko (#8)
 
 ## 🧰 Maintenance
 
-- [ci]Add version list @Aisuko (#32)
-- [feature] Add makefile @Aisuko (#22)
-- [CI] Add CI for running unit testing @Aisuko (#18)
-- [CI]: feature/update CI @Aisuko (#8)
+- CI Add version list @Aisuko (#32)
+- Ffeature Add makefile @Aisuko (#22)
+- CI Add CI for running unit testing @Aisuko (#18)
+- CI feature/update CI @Aisuko (#8)
 - Support releasing automaticly @Aisuko (#11)
 
 ## Contributors
