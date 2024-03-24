@@ -30,6 +30,9 @@ Change into the project directory by running the following command:
 cd chat-backend
 ```
 
+{: .warning }
+> Please go to check the latest version of frontend in the [releases](https://github.com/SkywardAI/chat-frontend/pkgs/container/rebel), and update it in docker-compose.yml file in [here](https://github.com/SkywardAI/chat-backend/blob/f73fff482b64cc45bde89fb5e7b4a8e5d1789481/docker-compose.yaml#L138).
+
 ## Step 3: Build the Docker image
 
 Setting up environment variables for the backend by creating a `.env` file in the root directory of the project. You can use the following template to create the `.env` file:
