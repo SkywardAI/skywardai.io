@@ -31,6 +31,7 @@ cd chat-backend
 ```
 
 {: .warning }
+
 > Please go to check the latest version of frontend in the [releases](https://github.com/SkywardAI/chat-frontend/pkgs/container/rebel), and update it in docker-compose.yml file in [here](https://github.com/SkywardAI/chat-backend/blob/f73fff482b64cc45bde89fb5e7b4a8e5d1789481/docker-compose.yaml#L138).
 
 ## Step 3: Build and run the images
@@ -93,7 +94,9 @@ You can verify that the backend is running correctly by visiting the following U
 http://localhost:80/
 ```
 
-![](../assets/images/rag-livechat.png)
+![](../assets/images/ticket_list.png)
+
+![](../assets/images/tickets.png)
 
 
 ## Stopping the Docker container
