@@ -1,5 +1,5 @@
 ---
 layout: default
 title: FAQ
-has_children: true
+nav_order: 7
 ---

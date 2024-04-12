@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Buil
-nav_order: 1
+title: Build and Run
+parent: Development
 ---
 
 
-# Running the SkywardAI Chat backend with the modified code locally
+# Building code and running the application
 
 The SkywardAI Chat backend is a Python-based application that uses the FastAPI framework to provide a RESTful API for the SkywardAI Chat frontend. This guide will walk you through the process of setting up the backend on your local machine.
 
