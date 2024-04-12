@@ -4,14 +4,15 @@ title: Quick Start
 nav_order: 2
 ---
 
-# Running the SkywardAI Chat backend locally
-
-The SkywardAI Chat backend is a Python-based application that uses the FastAPI framework to provide a RESTful API for the SkywardAI Chat frontend. This guide will walk you through the process of setting up the backend on your local machine.
 
 
 ## Prerequisites
 
 Please install Docker and Docker Compose on your machine before proceeding. You can find installation instructions for Docker [here](https://docs.docker.com/get-docker/).
+
+{: .warning}
+
+Please make sure you have right permission to run the docker command. See https://docs.docker.com/engine/install/linux-postinstall/
 
 
 ## Step 1: Clone the repository
@@ -42,39 +43,11 @@ Setting up environment variables for the backend by creating a `.env` file in th
 make demo
 ```
 
+
+Check the status of the containers by running the following command:
+
+
 ```bash
-
-vscode ➜ /workspaces/chat-backend (main) $ docker-compose build
-[+] Building 780.4s (16/16) FINISHED                                                                         docker:default
- => [backend_app internal] load build definition from Dockerfile                                                       0.0s
- => => transferring dockerfile: 1.04kB                                                                                 0.0s
- => [backend_app internal] load .dockerignore                                                                          0.0s
- => => transferring context: 2B                                                                                        0.0s
- => [backend_app internal] load metadata for docker.io/library/python:latest                                           2.1s
- => [backend_app auth] library/python:pull token for registry-1.docker.io                                              0.0s
- => [backend_app  1/10] FROM docker.io/library/python:latest@sha256:336461f63f4eb1100e178d5acbfea3d1a5b2a53dea88aa0f9  0.0s
- => [backend_app internal] load build context                                                                          0.0s
- => => transferring context: 5.79kB                                                                                    0.0s
- => CACHED [backend_app  2/10] WORKDIR /usr/backend                                                                    0.0s
- => CACHED [backend_app  3/10] RUN python3 -m venv /opt/venv                                                           0.0s
- => CACHED [backend_app  4/10] RUN apt-get update   && apt-get -y install netcat-traditional gcc postgresql   && apt-  0.0s
- => CACHED [backend_app  5/10] RUN pip install --upgrade pip                                                           0.0s
- => CACHED [backend_app  6/10] COPY ./requirements.txt ./                                                              0.0s
- => [backend_app  7/10] RUN pip3 install -r requirements.txt                                                         764.1s
- => [backend_app  8/10] COPY . .                                                                                       0.0s 
- => [backend_app  9/10] COPY ./entrypoint.sh .                                                                         0.0s 
- => [backend_app 10/10] RUN chmod +x /usr/backend/entrypoint.sh                                                        0.2s 
- => [backend_app] exporting to image                                                                                  13.9s 
- => => exporting layers                                                                                               13.9s 
- => => writing image sha256:1be9afc851ec4d7c63db113de67b03ce7e83ae384c62a13c666628886b66fdb2                           0.0s 
- => => naming to docker.io/library/chat-backend-backend_app                                                            0.0s
-```
-
-Here we install tons of dependencies more detail see [requirements.txt](https://github.com/SkywardAI/chat-backend/blob/main/backend/requirements.txt), so it may take a while to build the image.
-
-
-```
-
 vscode ➜ /workspaces/chat-backend (main) $ docker ps -a
 CONTAINER ID   IMAGE                                      COMMAND                  CREATED              STATUS                        PORTS                      NAMES
 16897300a23f   adminer                                    "entrypoint.sh php -…"   About a minute ago   Up About a minute             0.0.0.0:8081->8080/tcp     db_editor
@@ -91,7 +64,7 @@ ab5b3bba9a4c   quay.io/coreos/etcd:v3.5.0                 "etcd -advertise-cli�
 You can verify that the backend is running correctly by visiting the following URL in your browser:
 
 ```
-http://localhost:80/
+http://localhost
 ```
 
 ![](../assets/images/ticket_list.png)
