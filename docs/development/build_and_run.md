@@ -95,7 +95,7 @@ You can verify that the backend is running correctly by visiting the following U
 ```
 http://localhost:80/
 ```
-
+<!-- images here -->
 ![](../assets/images/ui_ticketlist.png)
 
 ![](../assets/images/ui_chat.png)
