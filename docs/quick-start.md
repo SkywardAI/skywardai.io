@@ -67,9 +67,9 @@ You can verify that the backend is running correctly by visiting the following U
 http://localhost
 ```
 
-![](../assets/images/ticket_list.png)
+![](../assets/images/ui_ticketlist.png)
 
-![](../assets/images/tickets.png)
+![](../assets/images/ui_chat.png)
 
 
 ## Stopping the Docker container
