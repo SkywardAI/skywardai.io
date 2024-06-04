@@ -114,7 +114,7 @@ Despite its efficiency on consumer hardware and lack of GPU acceleration, GODEL 
 [Fast API Website](https://fastapi.tiangolo.com/)
 [PostgreSQL Website](https://www.postgresql.org/)
 
-We use FastAPI and PostgreSQL to interact with the GODEL seq2seq model (v1.1 base) without GPU acceleration, keeping the model in line with consumer hardware.
+We use FastAPI and HuggingFace Python libs to interact with the GODEL seq2seq model (v1.1 base) without GPU acceleration, keeping the model in line with consumer hardware.
 
 ### Milvus(vector-db)
 
