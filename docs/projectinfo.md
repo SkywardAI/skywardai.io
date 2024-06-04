@@ -99,7 +99,7 @@ GODEL is a large-scale pre-trained model for goal-directed dialogs. It is traine
 
 #### Efficient on Consumer Hardware
 
-GODEL v1.1 base seq2seq is optimised for running efficiently on consumer-grade hardware, making it an ideal choice for RAG chat-bots deployed on devices with limited computational resources.
+GODEL is a large-scale pre-trained model for goal-directed dialogs. It is trained on 551M multi-turn dialogs from Reddit. It is an ideal choice for RAG chat-bots deployed on devices with limited computational resources.
 
 #### Dialogue Adaptability
 
