@@ -109,7 +109,7 @@ GODEL leverages a new phase of grounded pre-training to enable better adaptation
 
 Despite its efficiency on consumer hardware and lack of GPU acceleration, GODEL v1.1 base seq2seq maintains a high level of performance and relevance in generating contextually rich responses, especially when considering its size (2.95GB).
 
-### FastAPI and PostgreSQL
+### FastAPI and HuggingFace
 
 [Fast API Website](https://fastapi.tiangolo.com/)
 [PostgreSQL Website](https://www.postgresql.org/)
