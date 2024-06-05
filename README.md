@@ -2,6 +2,9 @@
 
 Site for SkywardAI community.
 
+[![CI](https://github.com/SkywardAI/skywardai.io/actions/workflows/ci.yml/badge.svg)](https://github.com/SkywardAI/skywardai.io/actions/workflows/ci.yml)
+
+
 ## Building and previewing your site locally
 
 Assuming [Jekyll] and [Bundler] are installed on your computer:

@@ -112,7 +112,7 @@ Despite its efficiency on consumer hardware and lack of GPU acceleration, GODEL 
 ### FastAPI and HuggingFace
 
 [Fast API Website](https://fastapi.tiangolo.com/)
-[PostgreSQL Website](https://www.postgresql.org/)
+[HuggingFace Website](https://huggingface.co/microsoft/GODEL-v1_1-large-seq2seq)
 
 We use FastAPI and HuggingFace Python libs to interact with the GODEL seq2seq model (v1.1 base) without GPU acceleration, keeping the model in line with consumer hardware.
 
