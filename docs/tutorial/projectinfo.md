@@ -1,3 +1,10 @@
+---
+layout: default
+title: Project Information
+parent: Tutorial
+---
+
+
 ## What is Skyward AI
 
 SkywardAI is an open-source community dedicated to advancing the field of Retrieval-Augmented Generation (RAG) technology. It is created by a group of passionate students from the RMIT University, Melbourne, Australia. Our goal is to provide the free, real open-source RAG framework and data analysis solutions that enable anyone to democratise and run AI on consumer-grade hardware. And also support cloud-native deployment. The community is inspired by an open-source OpenAI alternative API LocalAI.
@@ -95,19 +102,6 @@ Nuxt is a flexible VueJS framework that uses reusable components to dynamically 
 
 GODEL is a large-scale pre-trained model for goal-directed dialogs. It is trained on at least 551M multi-turn dialogs which makes it more than enough for our current project goals.
 
-#### Why we chose GODEL:
-
-#### Efficient on Consumer Hardware
-
-GODEL is a large-scale pre-trained model for goal-directed dialogs. It is trained on 551M multi-turn dialogs from Reddit. It is an ideal choice for RAG chat-bots deployed on devices with limited computational resources.
-
-#### Dialogue Adaptability
-
-GODEL leverages a new phase of grounded pre-training to enable better adaptation (compared to earlier models, e.g DialoGPT) to a wider range of dialog tasks which require external information.
-
-#### Balanced Performance and Relevance
-
-Despite its efficiency on consumer hardware and lack of GPU acceleration, GODEL v1.1 base seq2seq maintains a high level of performance and relevance in generating contextually rich responses, especially when considering its size (2.95GB).
 
 ### FastAPI and HuggingFace
 
@@ -130,9 +124,9 @@ We use Docker to containerise our chat bot application, ensuring consistency acr
 
 ## User Interface
 
-![](../assets/images/ui_ticketlist.png)
+![](../../assets/images/ui_ticketlist.png)
 
-![](../assets/images/ui_chat.png)
+![](../../assets/images/ui_chat.png)
 
 ## Testing
 
@@ -169,12 +163,3 @@ PyTest combined with pre-commit runs automated code checks for key functionality
 
 __5. Review & Merge:__
 If all tests have passed and the PR has been approved by one or more maintainers, the code is merged into the main branch.
-
-## Getting Started and how to contribute
-
-1. Fork the repository and clone it to your local machine.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes, following our coding guidelines.
-4. Commit and push your changes to your forked repository.
-5. Open a pull request, and we'll review your contribution.
-6. Please check out our Contribution Guidelines for more details.
