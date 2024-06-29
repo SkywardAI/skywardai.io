@@ -35,8 +35,32 @@ cd chat-backend
 
 > Please go to check the latest version of frontend in the [releases](https://github.com/SkywardAI/chat-frontend/pkgs/container/rebel), and update it in docker-compose.yml file in [here](https://github.com/SkywardAI/chat-backend/blob/f73fff482b64cc45bde89fb5e7b4a8e5d1789481/docker-compose.yaml#L138).
 
+## Step 3: Download model
 
-## Step 3: Build and run the images
+After v0.1.7, we load model from local rather than download it behind system starting.
+
+```
+make minimal
+
+ec2-user@ip-10-110-145-52:~/workspace/chat-backend$ make minimal
+--2024-06-29 06:14:49--  https://huggingface.co/aisuko/gpt2-117M-gguf/resolve/main/ggml-model-Q4_K_M-v2.gguf?download=true
+Resolving huggingface.co (huggingface.co)... 18.67.93.102, 18.67.93.63, 18.67.93.22, ...
+Connecting to huggingface.co (huggingface.co)|18.67.93.102|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://cdn-lfs-us-1.huggingface.co/repos/ce/e4/cee486b6f34544253666bcac4195b7f8a90d3edfbf0bb21a33fa21d14267a8fd/6281d15f9663025df2dffc5f4a4a3850bd833b0d20e1d254bd0dd854f7c722a4?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27ggml-model-Q4_K_M-v2.gguf%3B+filename%3D%22ggml-model-Q4_K_M-v2.gguf%22%3B&Expires=1719900890&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxOTkwMDg5MH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2NlL2U0L2NlZTQ4NmI2ZjM0NTQ0MjUzNjY2YmNhYzQxOTViN2Y4YTkwZDNlZGZiZjBiYjIxYTMzZmEyMWQxNDI2N2E4ZmQvNjI4MWQxNWY5NjYzMDI1ZGYyZGZmYzVmNGE0YTM4NTBiZDgzM2IwZDIwZTFkMjU0YmQwZGQ4NTRmN2M3MjJhND9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=cxWjD1ZtWqA%7Eslr1y1%7EW16MkmGppYYvsLmYLER3aYtdviGzJZ9qbsDJoZgyvI01U6QXpjB8vKh8YEGqmj65AQnGbiptOypoYHRUSQg%7EZVG8zeP2TeklIOIQ6k%7E-bSw7FV7UPsG8huMrT%7ExqgbBT2Es3JQbDqNQ3u1ezY5OplxMlSoKdHsUkvFFqYdIZ7oMBNkrAOszowKek8712EgTu-wCM9xO46G4Z3BNQSRW4g1J%7EjbvfyArbXbnYMgEgfPU8jrViJPiPWNK6Yt86j3BN6hlg091AEu52I2bcCY36picS08duHvsL5uW95hbdkk4aVgOg3Ba3Sghxx6TtfVpokCA__&Key-Pair-Id=K24J24Z295AEI9 [following]
+--2024-06-29 06:14:50--  https://cdn-lfs-us-1.huggingface.co/repos/ce/e4/cee486b6f34544253666bcac4195b7f8a90d3edfbf0bb21a33fa21d14267a8fd/6281d15f9663025df2dffc5f4a4a3850bd833b0d20e1d254bd0dd854f7c722a4?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27ggml-model-Q4_K_M-v2.gguf%3B+filename%3D%22ggml-model-Q4_K_M-v2.gguf%22%3B&Expires=1719900890&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxOTkwMDg5MH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2NlL2U0L2NlZTQ4NmI2ZjM0NTQ0MjUzNjY2YmNhYzQxOTViN2Y4YTkwZDNlZGZiZjBiYjIxYTMzZmEyMWQxNDI2N2E4ZmQvNjI4MWQxNWY5NjYzMDI1ZGYyZGZmYzVmNGE0YTM4NTBiZDgzM2IwZDIwZTFkMjU0YmQwZGQ4NTRmN2M3MjJhND9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=cxWjD1ZtWqA%7Eslr1y1%7EW16MkmGppYYvsLmYLER3aYtdviGzJZ9qbsDJoZgyvI01U6QXpjB8vKh8YEGqmj65AQnGbiptOypoYHRUSQg%7EZVG8zeP2TeklIOIQ6k%7E-bSw7FV7UPsG8huMrT%7ExqgbBT2Es3JQbDqNQ3u1ezY5OplxMlSoKdHsUkvFFqYdIZ7oMBNkrAOszowKek8712EgTu-wCM9xO46G4Z3BNQSRW4g1J%7EjbvfyArbXbnYMgEgfPU8jrViJPiPWNK6Yt86j3BN6hlg091AEu52I2bcCY36picS08duHvsL5uW95hbdkk4aVgOg3Ba3Sghxx6TtfVpokCA__&Key-Pair-Id=K24J24Z295AEI9
+Resolving cdn-lfs-us-1.huggingface.co (cdn-lfs-us-1.huggingface.co)... 18.67.110.85, 18.67.110.3, 18.67.110.50, ...
+Connecting to cdn-lfs-us-1.huggingface.co (cdn-lfs-us-1.huggingface.co)|18.67.110.85|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 112858624 (108M) [application/octet-stream]
+Saving to: ‘volumes/models/gpt2-minimal-Q4_K_M-v2.gguf’
+
+volumes/models/gpt2-minimal-Q4 100%[==================================================>] 107.63M   344MB/s    in 0.3s    
+
+2024-06-29 06:14:50 (344 MB/s) - ‘volumes/models/gpt2-minimal-Q4_K_M-v2.gguf’ saved [112858624/112858624]
+```
+
+## Step 4: Build and run the images
 
 Setting up environment variables for the backend by creating a `.env` file in the root directory of the project. You can use the following template to create the `.env` file:
 
@@ -76,19 +100,19 @@ Here we install tons of dependencies more detail see [requirements.txt](https://
 
 
 ```
-
-vscode ➜ /workspaces/chat-backend (main) $ docker ps -a
-CONTAINER ID   IMAGE                                      COMMAND                  CREATED              STATUS                        PORTS                      NAMES
-16897300a23f   adminer                                    "entrypoint.sh php -…"   About a minute ago   Up About a minute             0.0.0.0:8081->8080/tcp     db_editor
-683d7eb8a65a   chat-backend-backend_app                   "/usr/backend/entryp…"   About a minute ago   Up About a minute             0.0.0.0:8001->8000/tcp     backend_app
-68598a38c9f1   milvusdb/milvus:v2.0.2                     "/tini -- milvus run…"   About a minute ago   Up About a minute             0.0.0.0:19530->19530/tcp   milvus-standalone
-ab5b3bba9a4c   quay.io/coreos/etcd:v3.5.0                 "etcd -advertise-cli…"   About a minute ago   Up About a minute             2379-2380/tcp              milvus-etcd
-54d225d8a80a   postgres:latest                            "docker-entrypoint.s…"   About a minute ago   Up About a minute             0.0.0.0:5433->5432/tcp     db
-61c147e907bb   minio/minio:RELEASE.2020-12-03T00-03-10Z   "/usr/bin/docker-ent…"   About a minute ago   Up About a minute (healthy)   9000/tcp                   milvus-minio
-33a2c52f196e   ghcr.io/skywardai/rebel:v0.0.4             "/docker-entrypoint.…"   About a minute ago   Up About a minute             0.0.0.0:80->80/tcp         frontend
+ec2-user@ip-10-110-145-52:~/workspace/chat-backend$ docker ps -a
+CONTAINER ID   IMAGE                                      COMMAND                  CREATED         STATUS                    PORTS                                           NAMES
+888cff94f750   chat-backend_backend_app                   "./entrypoint.sh uvi…"   7 minutes ago   Up 47 seconds             0.0.0.0:8001->8000/tcp, :::8001->8000/tcp       backend_app
+5fdbd0436e4f   adminer                                    "entrypoint.sh php -…"   7 minutes ago   Up 47 seconds             0.0.0.0:8081->8080/tcp, :::8081->8080/tcp       db_editor
+7a29cb7b5cc5   milvusdb/milvus:v2.3.12                    "/tini -- milvus run…"   7 minutes ago   Up 47 seconds             0.0.0.0:19530->19530/tcp, :::19530->19530/tcp   milvus-standalone
+8def940fb143   ghcr.io/skywardai/rebel:v0.1.3             "/docker-entrypoint.…"   7 minutes ago   Up 48 seconds             0.0.0.0:80->80/tcp, :::80->80/tcp               frontend
+ab6489118e59   gclub/llama.cpp:server--b1-a8d49d8         "/llama-server --hos…"   7 minutes ago   Up 48 seconds             0.0.0.0:8080->8080/tcp, :::8080->8080/tcp       llamacpp
+a9120176f3fd   postgres:latest                            "docker-entrypoint.s…"   7 minutes ago   Up 48 seconds             0.0.0.0:5433->5432/tcp, :::5433->5432/tcp       db
+fc537fd15551   quay.io/coreos/etcd:v3.5.0                 "etcd -advertise-cli…"   7 minutes ago   Up 48 seconds             2379-2380/tcp                                   milvus-etcd
+29f1b45ffa8f   minio/minio:RELEASE.2020-12-03T00-03-10Z   "/usr/bin/docker-ent…"   7 minutes ago   Up 48 seconds (healthy)   9000/tcp                                        milvus-minio
 ```
 
-## Step 4: Verify the setup
+## Step 5: Verify the setup
 
 You can verify that the backend is running correctly by visiting the following URL in your browser:
 
