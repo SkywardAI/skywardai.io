@@ -41,7 +41,13 @@ Run => Start Degging
 
 ![alt text](image-2.png)
 
+Open swagger for restful interface testing
+![alt text](image-4.png)
+![alt text](image-3.png)
 
+Done!
+
+I wish you a happy development~
 
 
 
