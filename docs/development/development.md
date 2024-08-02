@@ -17,7 +17,7 @@ Before development, please make sure you have installed the Python environment (
 
 
 ```bash
-pip3 install -r https://raw.githubusercontent.com/SkywardAI/containers/main/requirements.txt
+pip3 install -r https://raw.githubusercontent.com/SkywardAI/kirin/main/backend/requirements.txt
 ```
 
 ### Configuring Environment Variables
@@ -48,7 +48,3 @@ Open swagger for restful interface testing
 Done!
 
 I wish you a happy development~
-
-
-
-## Front-end environment
