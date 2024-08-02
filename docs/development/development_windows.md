@@ -33,17 +33,20 @@ POSTGRES_HOST=127.0.0.1
 MILVUS_HOST=127.0.0.1
 ```
 
-![alt text](image.png)
+![](../../assets/images/image.png)
 
 ### How to enter debug mode in Windows?
-Run => Start Degging
-![alt text](image-1.png)
 
-![alt text](image-2.png)
+**Run => Start Degging**
 
-Open swagger for restful interface testing
-![alt text](image-4.png)
-![alt text](image-3.png)
+![](../../assets/images/image-1.png)
+
+![](../../assets/images/image-2.png)
+
+**Open swagger for restful interface testing**
+
+![](../../assets/images/image-4.png)
+![](../../assets/images/image-3.png)
 
 Done!
 
