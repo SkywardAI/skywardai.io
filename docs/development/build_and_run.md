@@ -20,7 +20,7 @@ Please install Docker and Docker Compose on your machine before proceeding. You 
 First, clone the SkywardAI Chat repository to your local machine by running the following command:
 
 ```bash
-git clone https://github.com/SkywardAI/chat-backend.git
+git clone https://github.com/SkywardAI/kirin.git
 ```
 
 ## Step 2: Navigate to the project directory
@@ -28,39 +28,16 @@ git clone https://github.com/SkywardAI/chat-backend.git
 Change into the project directory by running the following command:
 
 ```bash
-cd chat-backend
+cd kirin
 ```
 
 {: .warning }
 
 > Please go to check the latest version of frontend in the [releases](https://github.com/SkywardAI/chat-frontend/pkgs/container/rebel), and update it in docker-compose.yml file in [here](https://github.com/SkywardAI/chat-backend/blob/f73fff482b64cc45bde89fb5e7b4a8e5d1789481/docker-compose.yaml#L138).
 
-## Step 3: Download model
 
-After v0.1.7, we load model from local rather than download it behind system starting.
 
-```
-make minimal
-
-ec2-user@ip-10-110-145-52:~/workspace/chat-backend$ make minimal
---2024-06-29 06:14:49--  https://huggingface.co/aisuko/gpt2-117M-gguf/resolve/main/ggml-model-Q4_K_M-v2.gguf?download=true
-Resolving huggingface.co (huggingface.co)... 18.67.93.102, 18.67.93.63, 18.67.93.22, ...
-Connecting to huggingface.co (huggingface.co)|18.67.93.102|:443... connected.
-HTTP request sent, awaiting response... 302 Found
-Location: https://cdn-lfs-us-1.huggingface.co/repos/ce/e4/cee486b6f34544253666bcac4195b7f8a90d3edfbf0bb21a33fa21d14267a8fd/6281d15f9663025df2dffc5f4a4a3850bd833b0d20e1d254bd0dd854f7c722a4?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27ggml-model-Q4_K_M-v2.gguf%3B+filename%3D%22ggml-model-Q4_K_M-v2.gguf%22%3B&Expires=1719900890&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxOTkwMDg5MH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2NlL2U0L2NlZTQ4NmI2ZjM0NTQ0MjUzNjY2YmNhYzQxOTViN2Y4YTkwZDNlZGZiZjBiYjIxYTMzZmEyMWQxNDI2N2E4ZmQvNjI4MWQxNWY5NjYzMDI1ZGYyZGZmYzVmNGE0YTM4NTBiZDgzM2IwZDIwZTFkMjU0YmQwZGQ4NTRmN2M3MjJhND9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=cxWjD1ZtWqA%7Eslr1y1%7EW16MkmGppYYvsLmYLER3aYtdviGzJZ9qbsDJoZgyvI01U6QXpjB8vKh8YEGqmj65AQnGbiptOypoYHRUSQg%7EZVG8zeP2TeklIOIQ6k%7E-bSw7FV7UPsG8huMrT%7ExqgbBT2Es3JQbDqNQ3u1ezY5OplxMlSoKdHsUkvFFqYdIZ7oMBNkrAOszowKek8712EgTu-wCM9xO46G4Z3BNQSRW4g1J%7EjbvfyArbXbnYMgEgfPU8jrViJPiPWNK6Yt86j3BN6hlg091AEu52I2bcCY36picS08duHvsL5uW95hbdkk4aVgOg3Ba3Sghxx6TtfVpokCA__&Key-Pair-Id=K24J24Z295AEI9 [following]
---2024-06-29 06:14:50--  https://cdn-lfs-us-1.huggingface.co/repos/ce/e4/cee486b6f34544253666bcac4195b7f8a90d3edfbf0bb21a33fa21d14267a8fd/6281d15f9663025df2dffc5f4a4a3850bd833b0d20e1d254bd0dd854f7c722a4?response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27ggml-model-Q4_K_M-v2.gguf%3B+filename%3D%22ggml-model-Q4_K_M-v2.gguf%22%3B&Expires=1719900890&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcxOTkwMDg5MH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmh1Z2dpbmdmYWNlLmNvL3JlcG9zL2NlL2U0L2NlZTQ4NmI2ZjM0NTQ0MjUzNjY2YmNhYzQxOTViN2Y4YTkwZDNlZGZiZjBiYjIxYTMzZmEyMWQxNDI2N2E4ZmQvNjI4MWQxNWY5NjYzMDI1ZGYyZGZmYzVmNGE0YTM4NTBiZDgzM2IwZDIwZTFkMjU0YmQwZGQ4NTRmN2M3MjJhND9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=cxWjD1ZtWqA%7Eslr1y1%7EW16MkmGppYYvsLmYLER3aYtdviGzJZ9qbsDJoZgyvI01U6QXpjB8vKh8YEGqmj65AQnGbiptOypoYHRUSQg%7EZVG8zeP2TeklIOIQ6k%7E-bSw7FV7UPsG8huMrT%7ExqgbBT2Es3JQbDqNQ3u1ezY5OplxMlSoKdHsUkvFFqYdIZ7oMBNkrAOszowKek8712EgTu-wCM9xO46G4Z3BNQSRW4g1J%7EjbvfyArbXbnYMgEgfPU8jrViJPiPWNK6Yt86j3BN6hlg091AEu52I2bcCY36picS08duHvsL5uW95hbdkk4aVgOg3Ba3Sghxx6TtfVpokCA__&Key-Pair-Id=K24J24Z295AEI9
-Resolving cdn-lfs-us-1.huggingface.co (cdn-lfs-us-1.huggingface.co)... 18.67.110.85, 18.67.110.3, 18.67.110.50, ...
-Connecting to cdn-lfs-us-1.huggingface.co (cdn-lfs-us-1.huggingface.co)|18.67.110.85|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 112858624 (108M) [application/octet-stream]
-Saving to: ‘volumes/models/gpt2-minimal-Q4_K_M-v2.gguf’
-
-volumes/models/gpt2-minimal-Q4 100%[==================================================>] 107.63M   344MB/s    in 0.3s    
-
-2024-06-29 06:14:50 (344 MB/s) - ‘volumes/models/gpt2-minimal-Q4_K_M-v2.gguf’ saved [112858624/112858624]
-```
-
-## Step 4: Build and run the images
+## Step 3: Build and run the images
 
 Setting up environment variables for the backend by creating a `.env` file in the root directory of the project. You can use the following template to create the `.env` file:
 
@@ -95,8 +72,6 @@ vscode ➜ /workspaces/chat-backend (main) $ make up
  => => writing image sha256:1be9afc851ec4d7c63db113de67b03ce7e83ae384c62a13c666628886b66fdb2                           0.0s 
  => => naming to docker.io/library/chat-backend-backend_app                                                            0.0s
 ```
-
-Here we install tons of dependencies more detail see [requirements.txt](https://github.com/SkywardAI/chat-backend/blob/main/backend/requirements.txt), so it may take a while to build the image.
 
 
 ```
@@ -144,27 +119,6 @@ vscode ➜ /workspaces/chat-backend (main) $ make stop
  ✔ Container milvus-minio       Stopped          0.6s 
  ✔ Container db                 Stopped          0.1s
 ```
-
-
-This will stop the backend container and clean up any resources that were created during the setup process. You can only stop the containers by using
-
-```bash
-make remove
-```
-
-
-```bash
-vscode ➜ /workspaces/chat-backend (main) $ make remove
-[+] Running 7/6
- ✔ Container backend_app         Removed         10.1s 
- ✔ Container milvus-standalone   Removed         0.0s 
- ✔ Container db_editor           Removed         0.1s 
- ✔ Container milvus-etcd         Removed         0.0s 
- ✔ Container milvus-minio        Removed         0.0s 
- ✔ Container db                  Removed         0.1s 
- ✔ Network chat-backend_default  Removed         0.0s
-```
-
 
 # Troubleshooting
 

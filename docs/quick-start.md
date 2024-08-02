@@ -10,7 +10,7 @@ nav_order: 2
 
 Please install Docker and Docker Compose on your machine before proceeding. You can find installation instructions for Docker [here](https://docs.docker.com/get-docker/).
 
-{: .warning}
+>[!Warning]
 
 Please make sure you have right permission to run the docker command. See https://docs.docker.com/engine/install/linux-postinstall/
 
@@ -20,7 +20,7 @@ Please make sure you have right permission to run the docker command. See https:
 First, clone the SkywardAI Chat repository to your local machine by running the following command:
 
 ```bash
-git clone https://github.com/SkywardAI/chat-backend.git
+git clone https://github.com/SkywardAI/kirin.git
 ```
 
 ## Step 2: Navigate to the project directory
@@ -28,7 +28,7 @@ git clone https://github.com/SkywardAI/chat-backend.git
 Change into the project directory by running the following command:
 
 ```bash
-cd chat-backend
+cd kirin
 ```
 
 {: .warning }
