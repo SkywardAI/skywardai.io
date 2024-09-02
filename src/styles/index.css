@@ -5,6 +5,9 @@ body {
 	--top-nav-height: 55px;
 	--main-page-height: calc(100dvh - var(--top-nav-height));
 	--main-components-width: 100dvw;
+
+	--light-gray: rgb(240, 240, 240);
+	--light-black: rgb(70, 70, 70);
 }
 
 * {
