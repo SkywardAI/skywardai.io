@@ -1,0 +1,10 @@
+.home > section {
+    width: 100%;
+    height: fit-content;
+    padding: 40px 20px;
+    background-color: white;
+    min-height: 200px;
+}
+.home > section:nth-child(odd) {
+    background-color: rgb(240, 240, 240);
+}

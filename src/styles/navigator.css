@@ -1,0 +1,46 @@
+.top-nav-bar > .logo {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color: gray;
+}
+
+.top-nav-bar > .logo > img {
+    width: calc(var(--top-nav-height) - 10px);
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.top-nav-bar > .logo > *:last-child {
+    margin-right: auto;
+}
+
+.top-nav-bar > .links {
+    position: relative;
+    margin: auto;
+    width: 60%;
+    display: flex;
+}
+
+.top-nav-bar > .links > .link {
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    padding: 7px 10px;
+    border-radius: 20px;
+    transition-duration: .3s;
+    width: fit-content;
+}
+.top-nav-bar > .links > .link:hover {
+    background-color: rgb(240, 240, 240);
+}
+.top-nav-bar > .links > .link:not(:last-child) {
+    margin-right: 20px;
+}
