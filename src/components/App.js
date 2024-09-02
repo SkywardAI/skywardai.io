@@ -8,19 +8,21 @@ import Home from "./Home"
 import Navigator from "./Navigator";
 import About from "./About";
 
+import { genURL } from "../utils";
+
 function App() {
 
     const router = createBrowserRouter([
         {
-            path: "/",
+            path: process.env.REACT_APP_BASE_ROUTE,
             element: <Navigator />,
             children: [
                 {
-                    path: '/',
+                    path: genURL(),
                     element: <Home />
                 },
                 {
-                    path: '/about',
+                    path: genURL('about'),
                     element: <About />
                 }
             ]
