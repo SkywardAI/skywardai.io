@@ -20,7 +20,7 @@ export default function Home() {
                             Object.keys(projects).map(name=>{
                                 return (
                                     <div 
-                                        className={`ticket clickable${display_project===name?' selected':""}`}
+                                        className={`ticket clickable${(display_project===name&&' selected')||""}`}
                                         key={`project-${name}`} onClick={()=>setDisplayProject(name)}
                                     >
                                         <div className="bg">{name}</div>
@@ -29,30 +29,36 @@ export default function Home() {
                             })
                         }
                     </div>
-                    <div className="details">
-                        <div className="title">{display_project}</div>
-                        <div className="badgers">
-                            {
-                                projects[display_project].badgers &&
-                                projects[display_project].badgers.map(badger=>{
-                                    return <img src={badger} alt="badger" />
-                                })
-                            }
-                        </div>
-                        <div className="description">{projects[display_project].description}</div>
-                        <div className="urls">
-                            {projects[display_project].urls &&
-                            projects[display_project].urls.map(({name, url})=>{
-                                return (
-                                    <Link 
-                                        key={`${display_project}-url-${name}`} 
-                                        to={url} target="_blank" className="url"
-                                    >{name}</Link>
-                                )
-                            })}
-                        </div>
-                        {projects[display_project].video && <video src={projects[display_project].video} controls />}
-                    </div>
+                    {Object.keys(projects).map(project=>{
+                        const { badges, description, urls, images, videos } = projects[project];
+                        return (
+                            <div className={`details${(display_project===project&&" show")||""}`} key={`project-details-${project}`}>
+                                <div className="title">{project}</div>
+                                <div className="badges">
+                                    {
+                                        badges && badges.map((badge, index)=>{
+                                            return <img key={`${project}-badge-${index}`} src={badge} alt="badge" />
+                                        })
+                                    }
+                                </div>
+                                <div className="description">{description}</div>
+                                <div className="urls">
+                                    {urls && urls.map(({name, url})=>{
+                                        return (
+                                            <Link 
+                                                key={`${project}-url-${name}`} 
+                                                to={url} target="_blank" className="url"
+                                            >{name}</Link>
+                                        )
+                                    })}
+                                </div>
+                                {videos && videos.map((url, index) => <video src={url} controls key={`${project}-video-${index}`}/>)}
+                                <div className="images">
+                                    { images && images.map((url, index) => <img src={url} alt="" key={`${project}-img-${index}`} />) }
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </section>
         </div>

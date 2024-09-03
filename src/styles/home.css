@@ -103,6 +103,10 @@ section.projects > .project-view > .details {
     right: 0;
     top: 0;
     padding: 20px;
+    display: none;
+}
+section.projects > .project-view > .details.show {
+    display: block;
 }
 section.projects > .project-view > .details > * {
     margin: auto;
@@ -114,7 +118,7 @@ section.projects > .project-view > .details > .title {
     font-size: 23px;
     font-weight: bold;
 }
-section.projects > .project-view > .details > .badgers > img:not(:last-child) {
+section.projects > .project-view > .details > .badges > img:not(:last-child) {
     margin-right: 10px;
 }
 section.projects > .project-view > .details > .description {
@@ -130,6 +134,12 @@ section.projects > .project-view > .details > .urls > .url {
 section.projects > .project-view > .details > .urls > .url:not(:last-child) {
     border-right: 2px solid gray;
 }
+section.projects > .project-view > .details > .images > img {
+    width: 60%;
+    display: block;
+    margin: auto;
+}
 section.projects > .project-view > .details > video {
     height: 400px;
+    max-width: calc(100% - 20px);
 }
