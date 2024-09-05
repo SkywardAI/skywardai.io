@@ -48,3 +48,12 @@ export const projects = {
         ]
     },
 }
+
+export const modelStatus = {
+    PENDING: 0,
+    NOT_DOWNLOAD: 1,
+    DOWNLOADING: 2,
+    NOT_LOADED: 3,
+    LOADING: 4,
+    LOADED: 5
+}
