@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../media/logo.png"
 import { genURL } from "../utils";

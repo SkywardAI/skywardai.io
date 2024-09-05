@@ -8,5 +8,5 @@
  * genURL("about"); // expected output "/skywardai.io/about"
  */
 export function genURL(path = "") {
-    return `${process.env.REACT_APP_BASE_ROUTE}/${path}`;
+    return `${import.meta.env.VITE_BASE_ROUTE}/${path}`;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { projects } from "../utils/types";
 import { Link } from "react-router-dom";
 
