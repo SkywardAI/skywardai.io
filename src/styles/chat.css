@@ -1,0 +1,43 @@
+.chat-page {
+    width: 100%;
+    min-height: 500px;
+    height: fit-content;
+    display: flex;
+}
+
+.chat-page .greeting {
+    width: fit-content;
+    position: relative;
+    margin: auto;
+    max-width: 80%;
+}
+
+.chat-page .greeting > .message {
+    font-size: 22px;
+    color: gray;
+    font-weight: bold;
+}
+
+.chat-page .greeting > .model-function {
+    margin: auto;
+    width: fit-content;
+    min-width: 250px;
+    height: 45px;
+    text-align: center;
+    margin-top: 30px;
+    user-select: none;
+    background-color: dodgerblue;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    align-content: center;
+    border-radius: 10px;
+}
+
+.chat-page .greeting > .model-function.dangerous {
+    background-color: white;
+    border: 3px solid red;
+    color: red;
+}
+
+/* .chat-page > .chat-main */
