@@ -8,6 +8,7 @@ import Navigator from "./Navigator";
 import About from "./About";
 
 import { genURL } from "../utils";
+import Chat from "./chat";
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
                 {
                     path: genURL('about'),
                     element: <About />
+                },
+                {
+                    path: genURL('chat'),
+                    element: <Chat />
                 }
             ]
         }

@@ -13,6 +13,7 @@ export default function Navigator() {
                 <div className="links">
                     <Link to={genURL("about")} className="link">About</Link>
                     <Link to={genURL()} className="link">Projects</Link>
+                    <Link to={genURL('chat')} className="link">Chat</Link>
                     <Link to={genURL()} className="link">Collaborators</Link>
                     <Link to={genURL()} className="link">Links</Link>
                 </div>

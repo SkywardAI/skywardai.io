@@ -1,6 +1,5 @@
 import { Wllama } from "@wllama/wllama/esm/index"
 import { Template } from '@huggingface/jinja';
-import { useState, useEffect } from 'react';
 
 import wllamaSingleJS from '@wllama/wllama/src/single-thread/wllama.js?url';
 import wllamaSingle from '@wllama/wllama/src/single-thread/wllama.wasm?url';
@@ -14,7 +13,7 @@ const CONFIG_PATHS = {
     'multi-thread/wllama.js': wllamaMultiJS,
     'multi-thread/wllama.wasm': wllamaMulti,
     'multi-thread/wllama.worker.mjs': wllamaMultiWorker,
-  };
+};
 
 const DEFAULT_CHAT_TEMPLATE = "{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}";
 
@@ -22,40 +21,48 @@ const engines = {
     completion: {
         model_src: "https://huggingface.co/HuggingFaceTB/smollm-360M-instruct-v0.2-Q8_0-GGUF/resolve/main/smollm-360m-instruct-add-basics-q8_0.gguf",
         instance: new Wllama(CONFIG_PATHS),
-        loaded: false,
         download_percentage: 0,
         stop_signal: false
     }
 }
 
-let components = [];
+export async function isModelDownloaded(type = 'completion') {
+    const { instance, model_src } = engines[type];
+    return !!await instance.cacheManager.getMetadata(model_src)
+}
 
-async function loadModel(type = 'completion', cb = null) {
+export async function downloadModel(type = 'completion', cb = null) {
+    const { instance, model_src } = engines[type];
+    await instance.downloadModel(model_src, {
+        allowOffline: true,
+        embeddings: type === 'embedding',
+        progressCallback: ({loaded, total})=>{
+            cb && cb((loaded / total) * 100);
+        }
+    })
+    cb && cb(100);
+}
+
+export async function deleteModel(type = 'completion') {
+    const { instance, model_src } = engines[type];
+    const cacheKey = await instance.cacheManager.getNameFromURL(model_src);
+    await instance.cacheManager.delete(cacheKey);
+}
+
+export async function loadModel(type = 'completion') {
     // check if model already in cache
     const { instance, model_src } = engines[type];
-    if(!await instance.cacheManager.getMetadata(model_src)) {
-        await instance.downloadModel(model_src, {
-            allowOffline: true,
-            embeddings: type === 'embedding',
-            progressCallback: ({loadedd, total})=>{
-                engines[type].download_percentage = (loadedd / total) * 100;
-                cb && cb(engines[type].download_percentage);
-            }
-        })
-        engines[type].download_percentage = 100;
-        cb && cb(100);
-    }
+    
     try {
         await instance.loadModelFromUrl(model_src);
     } catch(error) {
         console.error(error)
-    } finally {
-        engines[type].loaded = true;
-        components.forEach(e=>e(engines));
     }
+
+    return await instance.isModelLoaded();
 }
 
-async function formatPrompt(messages) {
+export async function formatPrompt(messages) {
     const instance = engines['completion'].instance;
     if(!instance.isModelLoaded()) return;
 
@@ -70,9 +77,10 @@ async function formatPrompt(messages) {
     });
 }
 
-async function chatCompletions(messages, cb = null) {
+export async function chatCompletions(messages, cb = null) {
     engines['completion'].stop_signal = false;
     const prompt = await formatPrompt(messages)
+    console.log(prompt)
     const result = await engines['completion'].instance.createCompletion(prompt, {
         nPredict: 128,
         useCache: true,
@@ -84,17 +92,4 @@ async function chatCompletions(messages, cb = null) {
     engines['completion'].stop_signal = false;
     cb && cb(result, true);
     return result;
-}
-
-export default function useWllama() {
-    const [enginesInfo, setEnginesInfo] = useState(engines);
-
-    useEffect(()=>{
-        components.push(setEnginesInfo);
-        return ()=>{
-            components = components.filter(e=>e!==setEnginesInfo);
-        }
-    }, [setEnginesInfo])
-
-    return { enginesInfo, loadModel, chatCompletions }
 }
