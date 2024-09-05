@@ -21,10 +21,11 @@ const engines = {
     completion: {
         model_src: "https://huggingface.co/HuggingFaceTB/smollm-360M-instruct-v0.2-Q8_0-GGUF/resolve/main/smollm-360m-instruct-add-basics-q8_0.gguf",
         instance: new Wllama(CONFIG_PATHS),
-        download_percentage: 0,
-        stop_signal: false
+        download_percentage: 0
     }
 }
+
+let stop_signal = false;
 
 export async function isModelDownloaded(type = 'completion') {
     const { instance, model_src } = engines[type];
@@ -54,7 +55,11 @@ export async function loadModel(type = 'completion') {
     const { instance, model_src } = engines[type];
     
     try {
-        await instance.loadModelFromUrl(model_src);
+        await instance.loadModelFromUrl(model_src, {
+            n_threads: 4,
+            n_ctx: 4096,
+            n_batch: 128,
+        });
     } catch(error) {
         console.error(error)
     }
@@ -78,18 +83,24 @@ export async function formatPrompt(messages) {
 }
 
 export async function chatCompletions(messages, cb = null) {
-    engines['completion'].stop_signal = false;
+    stop_signal = false;
     const prompt = await formatPrompt(messages)
-    console.log(prompt)
     const result = await engines['completion'].instance.createCompletion(prompt, {
         nPredict: 128,
         useCache: true,
+        sampling: {
+            temp: 0.2
+        },
         onNewToken: (token, piece, currentText, optionals) => {
             cb && cb(currentText, false);
-            if(engines['completion'].stop_signal) optionals.abortSignal();
+            if(stop_signal) optionals.abortSignal();
         }
     })
-    engines['completion'].stop_signal = false;
+    stop_signal = false;
     cb && cb(result, true);
     return result;
+}
+
+export function abortCompletion() {
+    stop_signal = true;
 }
