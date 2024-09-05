@@ -1,4 +1,3 @@
-import React from "react";
 import {
     createBrowserRouter,
     RouterProvider,
@@ -14,7 +13,7 @@ function App() {
 
     const router = createBrowserRouter([
         {
-            path: process.env.REACT_APP_BASE_ROUTE,
+            path: import.meta.env.VITE_BASE_ROUTE,
             element: <Navigator />,
             children: [
                 {
