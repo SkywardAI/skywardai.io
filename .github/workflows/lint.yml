@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: 'pages'
+  group:  ${{ github.workflow }}-${{ github.head_ref && github.ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
