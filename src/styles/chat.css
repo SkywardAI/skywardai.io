@@ -78,7 +78,7 @@
     padding: 10px;
 }
 
-.chat-page > .chat-main > .conversation > .bubble.assistant > p code {
+.chat-page > .chat-main > .conversation > .bubble.assistant :not(pre) > code {
     background-color: var(--light-gray);
     padding: 0px 10px;
     border-radius: 5px;
@@ -111,6 +111,7 @@
 .chat-page > .chat-main > .user-message-form {
     position: relative;
     --elem-height: 50px;
+    margin-top: 10px;
 }
 
 .chat-page > .chat-main > .user-message-form > input.message {
