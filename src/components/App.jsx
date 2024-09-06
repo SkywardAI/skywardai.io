@@ -6,27 +6,25 @@ import {
 import Home from "./Home"
 import Navigator from "./Navigator";
 import About from "./About";
-
-import { genURL } from "../utils";
 import Chat from "./chat";
 
 function App() {
 
     const router = createBrowserRouter([
         {
-            path: import.meta.env.VITE_BASE_ROUTE,
+            path: '/',
             element: <Navigator />,
             children: [
                 {
-                    path: genURL(),
+                    path: '/',
                     element: <Home />
                 },
                 {
-                    path: genURL('about'),
+                    path: 'about',
                     element: <About />
                 },
                 {
-                    path: genURL('chat'),
+                    path: 'chat',
                     element: <Chat />
                 }
             ]
