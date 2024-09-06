@@ -29,7 +29,10 @@ let stop_signal = false;
 
 export async function isModelDownloaded(type = 'completion') {
     const { instance, model_src } = engines[type];
-    return !!await instance.cacheManager.getMetadata(model_src)
+    return (
+        (await instance.cacheManager.list())
+        .findIndex(e=>e.metadata.originalURL === model_src) >= 0
+    )
 }
 
 export async function downloadModel(type = 'completion', cb = null) {
