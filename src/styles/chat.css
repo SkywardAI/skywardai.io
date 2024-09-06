@@ -76,6 +76,7 @@
     background-color: rgb(20, 20,20);
     color: white;
     padding: 10px;
+    overflow: auto;
 }
 
 .chat-page > .chat-main > .conversation > .bubble.assistant :not(pre) > code {
@@ -156,4 +157,14 @@
 
 .chat-page > .chat-main > .user-message-form > .button-container:hover > .icon {
     transform: rotate(45deg);
+}
+
+@media screen and (max-width: 765px) {
+	.chat-page > .chat-main {
+        width: calc(100% - 20px);
+    }
+
+    .chat-page > .chat-main > .conversation {
+        padding-left: 10px;
+    }
 }
