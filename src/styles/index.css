@@ -45,6 +45,7 @@ input:focus {
 	display: flex;
 	align-items: center;
 	border-bottom: 1px solid lightgray;
+	z-index: 2;
 }
 
 .main {
@@ -54,6 +55,7 @@ input:focus {
 	bottom: 0;
 	left: 0;
 	overflow: auto;
+	z-index: 1;
 }
 
 .declaimer {
@@ -64,4 +66,10 @@ input:focus {
 	text-align: center;
 	width: 100%;
 	height: fit-content;
+}
+
+@media screen and (max-width: 765px) {
+	.top-nav-bar {
+		overflow: unset;
+	}
 }
