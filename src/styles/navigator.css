@@ -44,3 +44,44 @@
 .top-nav-bar > .links > .link:not(:last-child) {
     margin-right: 20px;
 }
+
+.top-nav-bar > .hamburger-menu {
+    position: absolute;
+    --y-margin: calc(var(--top-nav-height) * 0.25);
+    --size: calc(var(--top-nav-height) - (var(--y-margin) * 2));
+    width: var(--size);
+    height: var(--size);
+    right: calc(var(--size) / 2);
+    top: var(--y-margin);
+    color: gray;
+    display: none;
+}
+
+@media screen and (max-width: 765px) {
+	.top-nav-bar > .links {
+        position: absolute;
+        height: var(--main-page-height);
+        width: calc(var(--main-components-width)* 0.7);
+        left: 0;
+        top: var(--top-nav-height);
+        background-color: white;
+        flex-direction: column;
+        transition-duration: .5s;
+        transform: translateX(-100%);
+        border-right: 1px solid lightgray;
+	}
+    .top-nav-bar > .hamburger-menu {
+        display: block;
+    }
+    .top-nav-bar > .links.expanded {
+        transform: translateX(0);
+    }
+
+    .top-nav-bar > .links > .link {
+        margin: unset !important;
+        width: 100%;
+        padding: 10px 16px;
+        border-radius: unset;
+        font-size: 20px;
+    }
+}

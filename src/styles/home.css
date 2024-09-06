@@ -24,7 +24,9 @@ section.welcome > .description {
     margin-top: 7px;
     margin-left: 10px;
 }
-
+section.projects {
+    --project-show-height: 700px;
+}
 section.projects > .title {
     font-size: 23px;
     color: var(--light-black);
@@ -32,7 +34,7 @@ section.projects > .title {
 }
 section.projects > .project-view {
     width: 100%;
-    height: 700px;
+    height: var(--project-show-height);
     margin-top: 20px;
     position: relative;
     border: 2px solid gray;
@@ -142,4 +144,42 @@ section.projects > .project-view > .details > .images > img {
 section.projects > .project-view > .details > video {
     height: 400px;
     max-width: calc(100% - 20px);
+}
+
+@media screen and (max-width: 765px) {
+	section.welcome {
+        padding: 20px;
+    }
+    section.projects > .project-view {
+        --project-show-height: 300px;
+        width: 100%;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+    section.projects > .project-view > .tickets {
+        display: none;
+    }
+
+    section.projects > .project-view > .details {
+        width: 100%;
+        padding: 10px;
+        display: block;
+        position: relative;
+        height: fit-content;
+        overflow: hidden;
+        border-bottom: 1px solid lightgray;
+        margin-left: 5px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: var(--project-show-height);
+    }
+    section.projects > .project-view > .details > video {
+        height: unset;
+        max-width: 100%;
+    }
+    section.projects > .project-view > .details > .description,
+    section.projects > .project-view > .details > .images > img {
+        width: 100%;
+    }
 }
