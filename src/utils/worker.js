@@ -50,7 +50,7 @@ export async function resetInstance() {
     try {
         engines.completion.instance = new Wllama(CONFIG_PATHS)
     }
-    catch{
+    catch(error) {
         console.error(error)
     }
 }
