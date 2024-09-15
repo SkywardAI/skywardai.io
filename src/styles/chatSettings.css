@@ -1,0 +1,101 @@
+:root {
+  --borderColor: 1px solid hsla(0, 0%, 32%, 0.603);
+}
+
+.settings {
+  left: 0px;
+  width: 15%;
+  background-color: #f5f4f4;
+  padding: 2vh;
+  border-right: var(--borderColor);
+  border-bottom: var(--borderColor);
+  border-top: var(--borderColor);
+  border-top-right-radius: 2vh;
+  border-bottom-right-radius: 2vh;
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  transition: 1s;
+}
+
+.settings.open {
+  transition: 1s;
+  transform: translateX(-100%);
+}
+
+.slider-container {
+  margin-bottom: 1vh;
+}
+
+input[type="range"] {
+  width: 90%;
+}
+
+.toggle {
+  display: flex;
+  top: 9%;
+  transform: translateX(0%);
+  position: absolute;
+  right: 0;
+  padding: 4% 4%;
+  background-color: #007bff;
+  color:white;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 0vh;
+  border-bottom-right-radius: 0vh;
+  border-top-left-radius: 1vh;
+  border-bottom-left-radius: 1vh;
+  box-shadow: 0 0.2vh 1vh rgba(0,0,0,0.2);
+  transition: 0.5s ease;
+  
+}
+
+.reload {
+  display: flex;
+  padding: 4% 4%;
+  background-color: #007bff;
+  color:white;
+  border: none;
+  cursor: pointer;
+  border-radius: 1vh;
+  box-shadow: 0 0.5% 0.6% rgba(0,0,0,0.2);
+  transition: 0.5s ease;
+}
+
+.toggle:hover, .reload:hover {
+  background-color: #0265cf;
+}
+
+.toggle:active, .reload:active {
+  background-color: #023872;
+}
+
+.toggle.open {
+  transform: translateX(100%);
+  border-top-right-radius: 1vh;
+  border-bottom-right-radius: 1vh;
+  border-top-left-radius: 0vh;
+  border-bottom-left-radius: 0vh;
+}
+
+.number-input {
+    width: 95%;
+    border-radius: 1vh;
+    border-color: #979797;
+}
+
+img{
+  vertical-align: top;
+  width: 100%;
+}
+
+b.notice {
+  font-size: small;
+  color: rgb(96, 96, 96);
+}
+
+h3, h4 {
+  margin-bottom: 20px;
+  color: rgb(74, 74, 74)
+}
