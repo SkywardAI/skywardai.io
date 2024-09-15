@@ -15,8 +15,6 @@ export default function ChatPage() {
     const convRef = useRef();
     const [nPredict, setNpredict] = useState();
     const [temp, setTemp] = useState();
-    const [nBatch, setNbatch] = useState();
-    const [nCtx, setNctx] = useState();
 
     function submitChat(event) {
         event.preventDefault();
@@ -50,7 +48,7 @@ export default function ChatPage() {
 
     return (
         <div className="chat-main">
-            <Settings setNpredict={setNpredict} setTemp={setTemp} setNbatch={setNbatch} setNctx={setNctx} />
+            <Settings setNpredict={setNpredict} setTemp={setTemp}/>
             <div className="conversation" ref={convRef}>
                 {
                     messageHistory.map(({role, content}, index)=>{

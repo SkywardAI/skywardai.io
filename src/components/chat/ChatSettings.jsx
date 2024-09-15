@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../../styles/chatSettings.css';
 import settingsIcon from '../../media/settings-icon.svg' ;
 import leftArrow from '../../media/left-arrow.svg';
@@ -18,9 +18,9 @@ const Settings = ({setNpredict, setTemp, setNbatch, setNctx}) => {
   useEffect(() => {
             setNpredict(nPredict);
             setTemp(temp);
-            setNbatch(nBatch);
-            setNctx(nCtx);
-  }, [nPredict, temp, nBatch, nCtx, setNpredict, setTemp, setNbatch, setNctx]);
+            setNbatch;
+            setNctx;
+  }, [nPredict, temp, setNpredict, setTemp, setNbatch, setNctx]);
 
   function reload(event) {
     event.preventDefault();
