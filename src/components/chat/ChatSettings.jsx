@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../styles/chatSettings.css';
-import settingsIcon from '../../media/settings-icon.svg' ;
-import leftArrow from '../../media/left-arrow.svg';
 import { loadModel, resetInstance } from "../../utils/worker";
+import { ChevronLeft, GearFill, ArrowClockwise} from 'react-bootstrap-icons';
 
 const Settings = ({setNpredict, setTemp, setNbatch, setNctx}) => {
   const [open, setOpen] = useState(true);
@@ -108,10 +107,10 @@ const Settings = ({setNpredict, setTemp, setNbatch, setNctx}) => {
           </div>
           <b  className='notice'>Changing the context length or Batch size will require you to reload the model.</b>
           <hr/>
-          <button onClick={reload} className='reload'>Reload Model</button>
+          <button onClick={reload} className='reload'><ArrowClockwise fontSize={15}/>Reload Model</button>
         </div>
         <button onClick={openSettings} className={`toggle ${open ? 'open' : ''}`}>
-          {open ? <img className="settingsIcon" src={settingsIcon}></img> : <img className='leftArrow' src={leftArrow}></img>}
+          {open ? <GearFill fontSize={25}/> : <ChevronLeft fontSize={25}/>}
           </button>
         </div>
           
