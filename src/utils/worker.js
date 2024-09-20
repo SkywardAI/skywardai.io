@@ -24,7 +24,6 @@ const engines = {
         download_percentage: 0
     }
 }
-
 let stop_signal = false;
 
 export async function isModelDownloaded(type = 'completion') {
@@ -47,21 +46,30 @@ export async function downloadModel(type = 'completion', cb = null) {
     cb && cb(100);
 }
 
+export async function resetInstance() {
+    try {
+        engines.completion.instance = new Wllama(CONFIG_PATHS)
+    }
+    catch(error) {
+        console.error(error)
+    }
+}
+
 export async function deleteModel(type = 'completion') {
     const { instance, model_src } = engines[type];
     const cacheKey = await instance.cacheManager.getNameFromURL(model_src);
     await instance.cacheManager.delete(cacheKey);
 }
 
-export async function loadModel(type = 'completion') {
+export async function loadModel(type = 'completion', nBatch, nCtx) {
     // check if model already in cache
     const { instance, model_src } = engines[type];
-    
+
     try {
         await instance.loadModelFromUrl(model_src, {
             n_threads: 4,
-            n_ctx: 4096,
-            n_batch: 128,
+            n_ctx: nBatch,
+            n_batch: nCtx,
         });
     } catch(error) {
         console.error(error)
@@ -85,20 +93,20 @@ export async function formatPrompt(messages) {
     });
 }
 
-export async function chatCompletions(messages, cb = null) {
-    stop_signal = false;
-    const prompt = await formatPrompt(messages)
-    const result = await engines['completion'].instance.createCompletion(prompt, {
-        nPredict: 128,
+export async function chatCompletions(messages, cb = null, nPredict, temp) {
+    const completionSettings = {
+        nPredict,
         useCache: true,
         sampling: {
-            temp: 0.2
+            temp
         },
         onNewToken: (token, piece, currentText, optionals) => {
             cb && cb(currentText, false);
             if(stop_signal) optionals.abortSignal();
         }
-    })
+    }
+    const prompt = await formatPrompt(messages)
+    const result = await engines['completion'].instance.createCompletion(prompt, completionSettings)
     stop_signal = false;
     cb && cb(result, true);
     return result;

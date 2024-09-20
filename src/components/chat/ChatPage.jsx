@@ -4,6 +4,7 @@ import { CircleFill } from 'react-bootstrap-icons'
 import { Send } from "react-bootstrap-icons";
 import { StopCircleFill } from "react-bootstrap-icons";
 import Markdown from 'react-markdown'
+import Settings from "./ChatSettings";
 
 export default function ChatPage() {
 
@@ -12,6 +13,8 @@ export default function ChatPage() {
     const [pendingContent, setPendingContent] = useState('');
     const [isDoingInference, toggleDoingInference] = useState(false)
     const convRef = useRef();
+    const [nPredict, setNpredict] = useState();
+    const [temp, setTemp] = useState();
 
     function submitChat(event) {
         event.preventDefault();
@@ -33,7 +36,7 @@ export default function ChatPage() {
                 toggleDoingInference(false);
                 setPendingContent('');
             }
-        })
+        }, parseInt(nPredict), parseFloat(temp))
     }
     
     useEffect(()=>{
@@ -45,6 +48,7 @@ export default function ChatPage() {
 
     return (
         <div className="chat-main">
+            <Settings setNpredict={setNpredict} setTemp={setTemp}/>
             <div className="conversation" ref={convRef}>
                 {
                     messageHistory.map(({role, content}, index)=>{
