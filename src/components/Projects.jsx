@@ -36,9 +36,9 @@ export default function Projects() {
 
     return (
         <div className="projects-main">
-            <div className={`sidebar${menu_open?'':" expand"}`}>
+            <div className={`sidebar${menu_open?' expand':''}`}>
                 <div className={`menu-controller clickable`} onClick={()=>toggleMenu(!menu_open)}>
-                    { menu_open ? <ChevronRight /> : <ChevronLeft /> }
+                    { menu_open ? <ChevronLeft /> : <ChevronRight /> }
                 </div>
                 {
                     Object.keys(projects).map((name, i)=>{
