@@ -28,6 +28,9 @@ export const projects = {
         urls: [
             {name: "GitHub", url: "https://github.com/SkywardAI/shibuya"},
         ],
+        videos: [
+            "https://github.com/user-attachments/assets/4cd16c88-25b6-4027-a5f4-5d67ef6458ef"
+        ],
         github_raw: 'https://raw.githubusercontent.com/SkywardAI/shibuya/main/'
     },
     Kirin: {
