@@ -7,6 +7,7 @@ import Home from "./Home"
 import Navigator from "./Navigator";
 import About from "./About";
 import Chat from "./chat";
+import Projects from "./Projects";
 
 function App() {
 
@@ -22,6 +23,10 @@ function App() {
                 {
                     path: 'about',
                     element: <About />
+                },
+                {
+                    path: 'projects',
+                    element: <Projects />
                 },
                 {
                     path: 'chat',
