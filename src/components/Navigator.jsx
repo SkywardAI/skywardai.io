@@ -16,7 +16,7 @@ export default function Navigator() {
                 </Link>
                 <div className={`links${expandMenu?" expanded":""}`}>
                     <Link onClick={()=>toggleExpand(false)} to={'/about'} className="link">About</Link>
-                    <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Projects</Link>
+                    <Link onClick={()=>toggleExpand(false)} to={'/projects'} className="link">Projects</Link>
                     <Link onClick={()=>toggleExpand(false)} to={'/chat'} className="link">Chat</Link>
                     <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Collaborators</Link>
                     <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Links</Link>

@@ -1,0 +1,151 @@
+.projects-main {
+    --sidebar-width: 300px;
+    --main-width: calc(100dvw - var(--sidebar-width));
+    --leave-for-declaimer: 30px;
+    position: relative;
+    width: 100dvw;
+    height: calc(var(--main-page-height) - var(--leave-for-declaimer));
+}
+
+.projects-main > .sidebar {
+    position: absolute;
+    height: calc(100% + var(--leave-for-declaimer));
+    width: var(--sidebar-width);
+    transition-duration: .4s;
+    left: 0;
+    bottom: calc(0 - var(--leave-for-declaimer));
+    background-color: white;
+    border-right: 2px solid gray;
+}
+
+.projects-main > .sidebar > .nav-item {
+    width: 100%;
+    padding: 0px 20px;
+    margin-bottom: 5px;
+    transition-duration: .4s;
+    font-weight: bold;
+    color: gray;
+    user-select: none;
+    align-content: center;
+    height: 60px;
+}
+
+.projects-main > .sidebar > .nav-item:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.projects-main > .sidebar > .menu-controller {
+    --controller-icon-size: 30px;
+    position: absolute;
+    right: 0;
+    width: var(--controller-icon-size);
+    height: var(--controller-icon-size);
+    background-color: dodgerblue;
+    align-items: center;
+    transition-delay: .4s;
+    transition-duration: .4s;
+    display: none;
+}
+
+.projects-main > .sidebar:not(.expand) > .menu-controller {
+    right: calc(0px - var(--controller-icon-size));
+}
+
+.projects-main > .sidebar > .menu-controller > svg {
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    color: white;
+}
+
+.projects-main > .readmes {
+    width: var(--main-width);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.projects-main > .readmes > .readme {
+    width: 100%;
+    height: fit-content;
+    padding: 30px;
+}
+
+.projects-main > .readmes > .readme:not(:last-child) {
+    border-bottom: 3px solid gray;
+}
+
+.projects-main > .readmes > .readme pre {
+    max-width: 100%;
+    width: fit-content;
+    overflow-x: auto;
+    background-color: rgb(70, 70, 70);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.projects-main > .readmes > .readme img {
+    max-width: 500px;
+}
+
+.projects-main > .readmes > .readme *:not(pre) code {
+    padding: 0px 6px;
+    border-radius: 3px;
+    background-color: rgb(230, 230, 230);
+}
+
+.projects-main > .readmes > .readme blockquote {
+    margin: unset;
+    position: relative;
+    width: fit-content;
+    padding-left: 20px;
+    color: gray;
+}
+
+.projects-main > .readmes > .readme blockquote::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: lightgray;
+}
+
+@media screen and (max-width: 765px) {
+    .projects-main {
+        --sidebar-width: 300px;
+        --main-width: 100%;
+    }
+
+    .projects-main > .sidebar {
+        z-index: 2;
+        transform: translateX(-100%);
+    }
+
+    .projects-main > .sidebar.expand {
+        transform: translateX(0);
+    }
+
+    .projects-main > .sidebar > .menu-controller {
+        display: flex;
+    }
+
+    .projects-main > .readmes {
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .projects-main > .readmes * {
+        max-width: 100% !important;
+    }
+
+    .projects-main > .readmes > .readme {
+        padding: 20px;
+    }
+    
+}
