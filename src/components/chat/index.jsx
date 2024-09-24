@@ -59,7 +59,7 @@ export default function Chat() {
                 </Greeting> : 
                 model_status === modelStatus.LOADING ? 
                 <Greeting message={"Loading model, please wait..."} /> : 
-
+                
                 <ChatPage />
             }
         </div>
