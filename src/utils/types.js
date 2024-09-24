@@ -13,7 +13,22 @@ export const projects = {
         ],
         videos: [
             "https://github.com/user-attachments/assets/fa7059c2-309e-486a-a28a-45867613c84b"
-        ]
+        ],
+        github_raw: 'https://raw.githubusercontent.com/SkywardAI/voyager/main/'
+    },
+    Shibuya: {
+        description: "Shibuya is a cross-platform AI chatbot that runs on your own machine. What you need is to download the exectuable and install it!",
+        badges: [
+            'https://img.shields.io/badge/React-61DAFB?logo=React&logoColor=white',
+            'https://img.shields.io/badge/Node.js-5FA04E?logo=Node.js&logoColor=white',
+            'https://img.shields.io/badge/Electron-47848F?logo=Electron&logoColor=white',
+            'https://github.com/SkywardAI/shibuya/actions/workflows/lint.yml/badge.svg',
+            'https://github.com/SkywardAI/shibuya/actions/workflows/distribution.yml/badge.svg'
+        ],
+        urls: [
+            {name: "GitHub", url: "https://github.com/SkywardAI/shibuya"},
+        ],
+        github_raw: 'https://raw.githubusercontent.com/SkywardAI/shibuya/main/'
     },
     Kirin: {
         description: "Kirin is a bakend project written by python, comes with a complete solution with frontend as a microservice based on Microsoft Phi3-mini model. It got a one-click setup command and you can start chat with your AI in no time.",
@@ -32,7 +47,8 @@ export const projects = {
         ],
         videos: [
             "https://github.com/user-attachments/assets/3890b4cd-392b-489f-ad48-4e9692d4dc15"
-        ]
+        ],
+        github_raw: 'https://raw.githubusercontent.com/SkywardAI/kirin/main/'
     },
     Rebel: {
         description: "Rebel is the frontend built for Kirin project. It uses only Native JavaScript so it can run in the most efficient way, on any platform.",
@@ -45,7 +61,8 @@ export const projects = {
         ],
         urls: [
             {name: "GitHub", url: "https://github.com/SkywardAI/rebel"},
-        ]
+        ],
+        github_raw: 'https://raw.githubusercontent.com/SkywardAI/rebel/master/',
     },
 }
 
