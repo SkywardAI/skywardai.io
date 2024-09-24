@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { projects } from "../utils/types";
 import Markdown from 'react-markdown'
 import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 
 export default function Projects() {
     const [ readme_list, setReadmeList ] = useState([]);
+    const [ menu_open, toggleMenu ] = useState(false);
     const readme_ref = useRef(null);
     
     useEffect(()=>{
@@ -34,7 +36,10 @@ export default function Projects() {
 
     return (
         <div className="projects-main">
-            <div className="sidebar">
+            <div className={`sidebar${menu_open?'':" expand"}`}>
+                <div className={`menu-controller clickable`} onClick={()=>toggleMenu(!menu_open)}>
+                    { menu_open ? <ChevronRight /> : <ChevronLeft /> }
+                </div>
                 {
                     Object.keys(projects).map((name, i)=>{
                         return (

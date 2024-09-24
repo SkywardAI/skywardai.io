@@ -34,6 +34,30 @@
     background-color: rgb(230, 230, 230);
 }
 
+.projects-main > .sidebar > .menu-controller {
+    --controller-icon-size: 30px;
+    position: absolute;
+    right: 0;
+    width: var(--controller-icon-size);
+    height: var(--controller-icon-size);
+    background-color: dodgerblue;
+    align-items: center;
+    transition-delay: .4s;
+    transition-duration: .4s;
+    display: none;
+}
+
+.projects-main > .sidebar:not(.expand) > .menu-controller {
+    right: calc(0px - var(--controller-icon-size));
+}
+
+.projects-main > .sidebar > .menu-controller > svg {
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    color: white;
+}
+
 .projects-main > .readmes {
     width: var(--main-width);
     height: 100%;
@@ -90,4 +114,38 @@
     height: 100%;
     width: 3px;
     background-color: lightgray;
+}
+
+@media screen and (max-width: 765px) {
+    .projects-main {
+        --sidebar-width: 300px;
+        --main-width: 100%;
+    }
+
+    .projects-main > .sidebar {
+        z-index: 2;
+        transform: translateX(-100%);
+    }
+
+    .projects-main > .sidebar.expand {
+        transform: translateX(0);
+    }
+
+    .projects-main > .sidebar > .menu-controller {
+        display: flex;
+    }
+
+    .projects-main > .readmes {
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .projects-main > .readmes * {
+        max-width: 100% !important;
+    }
+
+    .projects-main > .readmes > .readme {
+        padding: 20px;
+    }
+    
 }
