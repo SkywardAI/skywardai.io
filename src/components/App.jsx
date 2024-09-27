@@ -3,9 +3,8 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import Home from "./Home"
+import Home from "./home"
 import Navigator from "./Navigator";
-import About from "./About";
 import Chat from "./chat";
 import Projects from "./Projects";
 
@@ -19,10 +18,6 @@ function App() {
                 {
                     path: '/',
                     element: <Home />
-                },
-                {
-                    path: 'about',
-                    element: <About />
                 },
                 {
                     path: 'projects',
