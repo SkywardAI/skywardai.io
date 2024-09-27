@@ -15,11 +15,15 @@ export default function Navigator() {
                     <div>SkywardAI</div>
                 </Link>
                 <div className={`links${expandMenu?" expanded":""}`}>
-                    <Link onClick={()=>toggleExpand(false)} to={'/about'} className="link">About</Link>
-                    <Link onClick={()=>toggleExpand(false)} to={'/projects'} className="link">Projects</Link>
-                    <Link onClick={()=>toggleExpand(false)} to={'/chat'} className="link">Chat</Link>
-                    <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Collaborators</Link>
-                    <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Links</Link>
+                    {/* <Link onClick={()=>toggleExpand(false)} to={'/about'} className="link">About</Link> */}
+                    <Link onClick={()=>toggleExpand(false)} to={'/projects'} className="link clickable">Projects</Link>
+                    <Link onClick={()=>toggleExpand(false)} to={'/chat'} className="link clickable">Try AI Chat</Link>
+                    {/* <Link onClick={()=>toggleExpand(false)} to={'/'} className="link">Collaborators</Link> */}
+                    {/* <div className="link clickable">More Links</div> */}
+                    <Link to={'https://github.com/skywardai'} target="_blank" rel="noopener noreferrer" className="link clickable">Our GitHub</Link>
+                    <Link to={'https://www.kaggle.com/aisuko'} target="_blank" rel="noopener noreferrer" className="link clickable">Our Kaggle</Link>
+                    <Link to={'https://huggingface.co/aisuko'} target="_blank" rel="noopener noreferrer" className="link clickable">Our HuggingFace</Link>
+
                 </div>
                 <List className="hamburger-menu clickable" onClick={()=>toggleExpand(!expandMenu)} />
             </div>

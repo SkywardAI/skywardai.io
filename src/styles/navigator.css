@@ -37,6 +37,8 @@
     border-radius: 20px;
     transition-duration: .3s;
     width: fit-content;
+    user-select: none;
+    align-content: center;
 }
 .top-nav-bar > .links > .link:hover {
     background-color: var(--light-gray);
@@ -57,7 +59,7 @@
     display: none;
 }
 
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 815px) {
 	.top-nav-bar > .links {
         position: absolute;
         height: var(--main-page-height);

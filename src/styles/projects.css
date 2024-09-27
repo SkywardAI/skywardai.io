@@ -116,7 +116,24 @@
     background-color: lightgray;
 }
 
-@media screen and (max-width: 765px) {
+@keyframes loadingAnimation {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+.projects-main > .readmes:has(.loading) {
+    display: flex;
+    align-items: center;
+}
+
+.projects-main > .readmes > .loading {
+    animation: loadingAnimation 1.5s linear infinite;
+    --size: 30px;
+    width: var(--size);
+    height: var(--size);
+    margin: auto;
+}
+
+@media screen and (max-width: 815px) {
     .projects-main {
         --sidebar-width: 300px;
         --main-width: 100%;
