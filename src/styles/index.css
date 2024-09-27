@@ -68,7 +68,7 @@ input:focus {
 	height: fit-content;
 }
 
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 815px) {
 	.top-nav-bar {
 		overflow: unset;
 	}
