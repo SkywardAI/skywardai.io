@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { projects } from "../utils/types";
 import Markdown from 'react-markdown'
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+import { ArrowRepeat, ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 
 export default function Projects() {
     const [ readme_list, setReadmeList ] = useState([]);
@@ -26,8 +26,6 @@ export default function Projects() {
                         .replace(/\$\\rightarrow\$/g, '&rarr;')
                         .replace(/(<!-- .* -->)/g, '')
                     );
-                } else {
-                    //
                 }
             }
             setReadmeList(readmes)
@@ -60,13 +58,15 @@ export default function Projects() {
             </div>
             <div className="readmes" ref={readme_ref}>
             {
+                readme_list.length ? 
                 readme_list.map((readme, index )=>{
                     return (
                         <div className="readme" key={`readme-${index}`} id={`readme-${index}`}>
                             <Markdown>{ readme }</Markdown>
                         </div>
                     )
-                })
+                }):
+                <ArrowRepeat className="loading" />
             }
             </div>
         </div>
